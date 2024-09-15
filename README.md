@@ -4,8 +4,8 @@ Discover a world of convenience and endless possibilities at our online shopping
 
 ## Technologies
 
-Technologies used in project:\n
-Frontend: React , Rect-Vite \n
-Backend: Node.js, Express \n
-Database: MongoDB \n
+Technologies used in project:\
+Frontend: React , Rect-Vite \
+Backend: Node.js, Express \
+Database: MongoDB \
 
