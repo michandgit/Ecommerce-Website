@@ -7,5 +7,5 @@ Discover a world of convenience and endless possibilities at our online shopping
 Technologies used in project:\
 Frontend: React , Rect-Vite \
 Backend: Node.js, Express \
-Database: MongoDB \
+Database: MongoDB 
 
