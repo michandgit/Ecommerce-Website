@@ -8,7 +8,7 @@ const path = require("path");
 const cors = require("cors");
 const { log } = require('console');
 const dotenv = require("dotenv")
-const serverless = require("serverless-http");
+
 
 
 dotenv.config();
@@ -284,14 +284,12 @@ app.post('/getcart' ,fetchUser ,async (req,res) =>{
 })
 
 
-// app.listen(port , (error)=>{
-//     if(!error){
-//         console.log("Server runnign on Port " + port);
-//     }else{
-//         console.log("Error :"+error)
-//     }
-// })
+app.listen(port , (error)=>{
+    if(!error){
+        console.log("Server runnign on Port " + port);
+    }else{
+        console.log("Error :"+error)
+    }
+})
 
 
-module.exports = app;
-module.exports.handler = serverless(app);
