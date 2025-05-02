@@ -1,4 +1,4 @@
-const port = 4000;
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -7,13 +7,16 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const { log } = require('console');
+const dotenv = require("dotenv")
 
+dotenv.config();
+const port = process.env.PORT || 4001;
 
 app.use(express.json()); //whatever response we will get from request will be automatically passed through json
 app.use(cors()); 
 
 //Database Connection
-mongoose.connect("mongodb+srv://chandsi:Ecommercegola@cluster0.gvlae.mongodb.net/e-commerce")
+mongoose.connect(process.env.MONGO_URI)
 
 //API Creation
 app.get("/" ,(req,res)=>{
