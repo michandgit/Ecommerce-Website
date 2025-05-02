@@ -8,8 +8,14 @@ const Popular = () => {
 
   useEffect(()=>{
     fetch("https://ecommerce-website-mn8f.onrender.com/popularinwomen")
-    .then((res) => res.json())
-    .then((data) => setPopularProducts(data));
+    .then((res) => {
+      
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+      setPopularProducts(data);
+    });
 
   },[])
 

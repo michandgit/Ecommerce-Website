@@ -10,7 +10,6 @@ const { log } = require('console');
 const dotenv = require("dotenv")
 
 
-
 dotenv.config();
 const port = process.env.PORT || 4001;
 const serverUrl = process.env.SERVER_URL || `http://localhost:${port}`;
