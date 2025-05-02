@@ -13,6 +13,7 @@ const dotenv = require("dotenv")
 
 dotenv.config();
 const port = process.env.PORT || 4001;
+const serverUrl = process.env.SERVER_URL || `http://localhost:${port}`;
 
 app.use(express.json()); //whatever response we will get from request will be automatically passed through json
 app.use(cors()); 
@@ -47,7 +48,7 @@ app.use('/images', express.static('upload/images'))
 app.post("/upload",upload.single('product'),(req,res)=>{
     res.json({
         success:1,
-        image_url:`http://localhost:${port}/images/${req.file.filename}`
+        image_url:`${serverUrl}/images/${req.file.filename}`
     })
 
 })
