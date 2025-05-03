@@ -30,27 +30,37 @@ app.get("/" ,(req,res)=>{
 //we can create multiple endpoints on same api
 //create apis to add our products in database
 //image stor engine will store all the uploaded image -> upload
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("./cloudinaryConfig");
 
-// Image Storage Engine
-const storage = multer.diskStorage({
-    destination: "./upload/images",
-    filename: (req,file,cb)=>{
-        return cb(null ,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-    }
-})
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'ecommerce-products',
+    allowed_formats: ['jpg', 'png', 'jpeg'],
+    transformation: [{ width: 500, height: 500, crop: 'limit' }],
+  },
+});
 
-const upload = multer({storage:storage})
+const upload = multer({ storage: storage });
 
 //Creating Upload Endpoint for images
-app.use('/images', express.static('upload/images'))
+// app.use('/images', express.static('upload/images'))
 
-app.post("/upload",upload.single('product'),(req,res)=>{
+// app.post("/upload",upload.single('product'),(req,res)=>{
+//     res.json({
+//         success:1,
+//         image_url:`${serverUrl}/images/${req.file.filename}`
+//     })
+
+// })
+app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
-        success:1,
-        image_url:`${serverUrl}/images/${req.file.filename}`
-    })
-
-})
+      success: 1,
+      image_url: req.file.path, // Cloudinary provides the full URL in `path`
+    });
+  });
+  
 
 //using Thunder Client we can test the network request
 
